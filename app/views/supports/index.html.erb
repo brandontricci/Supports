@@ -1,0 +1,39 @@
+<h1>Listing supports</h1>
+
+<p>
+ <%= will_paginate @support, renderer: BootstrapPagination::Rails %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Department</th>
+      <th>Message</th>
+      <th>Done?</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @supports.each do |support| %>
+      <tr>
+        <td><%= support.Name %></td>
+        <td><%= support.email %></td>
+        <td><%= support.department %></td>
+        <td><%= support.message %></td>
+        <td><%= support.done? %></td>
+        <td><%= link_to 'Show', support %></td>
+        <td><%= link_to 'Edit', edit_support_path(support) %></td>
+        <td><%= link_to 'Destroy', support, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Support', new_support_path %>
